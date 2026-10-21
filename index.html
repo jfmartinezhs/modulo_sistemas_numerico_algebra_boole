@@ -1,0 +1,296 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Módulo didáctico de sistemas numéricos, codificación de información y álgebra de Boole para telecomunicaciones."><title>Sistemas numéricos y álgebra de Boole · Módulo didáctico</title><style>
+:root{--navy:#162f46;--deep:#10263a;--teal:#0d747d;--mint:#e8f7f4;--sky:#eaf3f9;--blue:#316994;--paper:#f5f8fa;--ink:#253b4e;--muted:#586f80;--line:#d9e5eb;--amber:#b77729;--red:#b94453;--success:#147e65;--shadow:0 10px 30px rgba(17,47,69,.075)}
+*{box-sizing:border-box}[hidden]{display:none!important}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.72 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+a{color:#075d78}a:hover{text-decoration-thickness:2px}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #f6b958;outline-offset:3px}
+.hero{background:linear-gradient(113deg,#11293f,#194763 65%,#17787d);color:white;padding:54px 5vw 48px;position:relative;overflow:hidden}.hero:after{content:'';position:absolute;width:360px;height:360px;border-radius:50%;border:2px solid #ffffff17;right:-90px;top:-220px;box-shadow:0 0 0 62px #ffffff0a,0 0 0 123px #ffffff07;pointer-events:none}.eyebrow{font-size:.74rem;letter-spacing:.16em;font-weight:800;color:#b8e9e6;text-transform:uppercase}.hero h1{font-size:clamp(2.2rem,4.4vw,4.2rem);letter-spacing:-.045em;line-height:1.13;margin:12px 0 13px;max-width:860px}.hero p{font-size:1.08rem;color:#e2eef4;max-width:800px;margin:0}.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.pills span{border:1px solid #ffffff54;border-radius:60px;padding:4px 12px;font-size:.82rem}
+.shell{display:grid;grid-template-columns:240px minmax(0,930px);gap:28px;max-width:1250px;margin:auto;padding:30px 19px 66px;align-items:start}.sidebar{background:#fff;padding:18px 15px;position:sticky;top:18px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.sidebar strong{display:block;font-size:.81rem;text-transform:uppercase;letter-spacing:.07em;color:#486276;margin-bottom:8px}.sidebar a{display:block;padding:7px 10px;border-radius:7px;border-left:3px solid transparent;text-decoration:none;font-size:.88rem;color:#415b6b;margin:2px 0}.sidebar a:hover,.sidebar a:focus-visible{background:#f0f8f7;border-left-color:var(--teal);color:#0d5d67}.sidebar .side-tip{border-top:1px solid var(--line);padding-top:14px;margin-top:14px;font-size:.79rem;color:var(--muted)}.content{min-width:0}
+.panel{padding:clamp(18px,3.2vw,34px);background:#fff;border:1px solid var(--line);border-radius:20px;margin:0 0 24px;box-shadow:var(--shadow);scroll-margin-top:18px}.sec-kicker{color:var(--teal);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800}.panel h2{font-size:clamp(1.55rem,2.8vw,2rem);letter-spacing:-.033em;line-height:1.22;color:var(--navy);margin:9px 0 19px}.panel h3{font-size:1.19rem;color:var(--navy);margin:29px 0 10px}.panel p{margin:8px 0 16px}.panel p.lead{font-size:1.075rem;color:#39596d}.panel ul,.panel ol{padding-left:24px}.panel li{margin:7px 0}.callout{background:#eaf8f6;border-left:4px solid #13838b;border-radius:0 10px 10px 0;padding:14px 17px;margin:19px 0}.callout.secondary{background:#eff5fd;border-left-color:#4679b0}.callout.warning{background:#fff7e9;border-left-color:#c48a2c}.objectives{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.objectives span{font-size:.83rem;background:#eff6f8;border:1px solid #d5e8ed;border-radius:20px;padding:4px 11px}
+code,.symbol-display,.byte-row,.bit-group,.base-chip,.boole-mark{font-family:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace}code{background:#eff4f8;border-radius:4px;padding:1px 4px;font-size:.94em;overflow-wrap:anywhere}table{width:100%;border-collapse:collapse;font-size:.925rem;margin:19px 0 22px}.panel>table{display:block;max-width:100%;overflow-x:auto;}th,td{border:1px solid #dae6eb;padding:10px 12px;text-align:left;vertical-align:top}thead th{background:#244f68;color:#fff;font-weight:750}tbody tr:nth-child(even){background:#f8fafb}td strong{color:#0c6170}.mini-figure,.byte-diagram{background:#f6fafc;border:1px solid #dce9ef;border-radius:13px;padding:17px;margin:18px 0}.mini-figure>strong{color:var(--navy)}.base-row{display:flex;justify-content:center;align-items:center;gap:13px;flex-wrap:wrap;margin:19px 0 7px}.base-chip{font-size:1.35rem;background:#e5f3f2;color:#155b65;font-weight:750;padding:8px 15px;border-radius:11px;letter-spacing:.035em}.base-equal{font-size:1.5rem;color:#638496}.base-chip sub{font-size:.62rem}.bit-group{background:#e8f4f5;border:1px solid #c3dadd;letter-spacing:.17em;font-size:1.25rem;padding:10px 14px;border-radius:8px}.bit-group.alt{background:#eaf0fa;border-color:#cbd8e9}.figcaption{color:#667e8d;font-size:.83rem;text-align:center;margin:7px 0 0!important}.worked{background:#f2f7fb;border:1px solid #dce8f1;border-radius:12px;padding:13px 18px;margin:18px 0}.worked>strong{color:#195b77}.worked p:last-child{margin-bottom:0}.worked ol{margin:8px 0}
+.media-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:19px 0}.media-tile{border:1px solid #dce7eb;border-radius:12px;padding:14px;background:#fbfdfe}.media-tile>strong{color:#185f6b}.media-tile p{font-size:.9rem;margin:9px 0 0}.symbol-display{font-size:1.1rem;font-weight:750;text-align:center;color:#174967;letter-spacing:.03em;padding:13px 0 7px}.pixel-row{display:flex;flex-wrap:wrap;gap:4px;margin:12px 0}.pixel{flex:1;border-radius:7px;padding:9px 4px;text-align:center;font-size:.79rem;color:white;font-weight:750}.pixel.r{background:#c76366}.pixel.g{background:#3f9b7a}.pixel.b{background:#4779b7}
+.byte-diagram{max-width:760px;margin-left:auto;margin-right:auto;text-align:center}.byte-label{font-size:.88rem;color:#31637b;font-weight:750;text-transform:uppercase;letter-spacing:.08em}.byte-row{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;margin:11px 0 7px}.byte-row span{display:block;border-radius:6px 6px 2px 2px;color:#144e62;background:#cde7ec;padding:10px 0;font-weight:850;font-size:clamp(.78rem,2vw,1.17rem)}.byte-row span:nth-child(n+5){background:#dce6fa;color:#264d79}.byte-row-desc{display:flex;gap:5px;font-size:.79rem;color:#4c687d}.byte-row-desc span{width:50%}.unit-track{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}.unit-track>div{border:1px solid #d7e5ea;border-radius:10px;background:#fff;padding:12px;display:grid;gap:3px}.unit-track b{color:#145f70}.unit-track span{font-weight:750;font-size:.94rem}.unit-track small{color:#5c7481}
+.boole-band{display:flex;gap:18px;align-items:center;padding:20px;background:#f1f8f8;border-radius:13px;margin:20px 0}.boole-band p{margin:5px 0!important}.boole-mark{font-size:2.1rem;white-space:nowrap;color:#0c6671;letter-spacing:-.08em;font-weight:800}.boole-mark span{color:#6693a7}.logic-flow{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;justify-content:center}.logic-flow span{padding:8px 10px;background:#e3f1f2;border-radius:7px;color:#1e5868;font-weight:750;font-size:.83rem}.logic-flow span+span:before{content:'→';display:inline-block;margin-right:12px;color:#68849b}.panel details{border:1px solid #d9e5eb;border-radius:11px;background:#f9fbfd;margin:11px 0;padding:2px 13px}.panel details summary{cursor:pointer;font-weight:750;color:#234e69;padding:12px 0}.panel details p{margin:3px 0 12px}.muted{color:var(--muted);font-size:.89rem}
+.lab{border:1px solid #c9e2df;background:#f5fbfa;border-radius:16px;padding:clamp(14px,2.3vw,22px);margin:26px 0 10px;box-shadow:0 5px 16px rgba(15,91,91,.045)}.lab-head h3{margin:3px 0 5px}.lab-head p{font-size:.9rem;color:#4c6979;margin:6px 0 17px}.lab-tag{color:#0a727a;font-size:.72rem;letter-spacing:.11em;font-weight:850}.lab label{color:#27485c;font-weight:750;font-size:.88rem;display:block}.lab input[type=text],.lab input[type=number],.lab select{min-height:43px;max-width:100%;display:block;width:100%;border:1px solid #c3d4dd;border-radius:9px;background:white;padding:7px 10px;margin:6px 0 0;color:#1c3b50}.lab input[type=checkbox]{width:18px;height:18px;vertical-align:middle;accent-color:#117a7e}.lab button{border:1px solid #bdd5d8;background:#fff;border-radius:8px;padding:8px 12px;color:#175f6d;font-weight:760}.lab button:hover{background:#e3f3f2}.lab button.primary,.expr-line button{background:#0f6f78;color:white;border:0}.lab button.primary:hover,.expr-line button:hover{background:#0b5964}.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.status{color:#a13a46!important;font-size:.89rem;margin:7px 0!important;min-height:8px}.result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.result-grid.two{grid-template-columns:1fr 2fr}.result-grid>div{background:white;border:1px solid #d1e3e5;border-radius:10px;padding:11px;min-width:0}.result-grid small{display:block;color:#647e8b;font-size:.71rem;font-weight:750;letter-spacing:.05em}.result-grid strong{display:block;color:#175a69;font-size:clamp(.92rem,1.5vw,1.15rem);overflow-wrap:anywhere;line-height:1.55}.explanation{background:white;border-left:3px solid #47a4a4;color:#3a5666;border-radius:0 8px 8px 0;padding:10px 13px;margin:13px 0 0;overflow-wrap:anywhere;font-size:.9rem}.mono-wrap{font:14px/1.7 ui-monospace,monospace}.toggle-group{display:flex;gap:13px;align-items:center;flex-wrap:wrap}.toggle-group label{background:#fff;padding:9px 12px;border:1px solid #d4e6e7;border-radius:9px;cursor:pointer}.gate-circuit{display:flex;justify-content:space-evenly;align-items:center;gap:12px;margin:19px 0 8px;min-height:84px;background:#fff;border:1px solid #d9e9e9;border-radius:12px;padding:13px;flex-wrap:wrap}.gate-circuit>span:first-child{font-family:monospace;font-weight:750}.gate-body{position:relative;border:3px solid #256d79;border-radius:10px 26px 26px 10px;padding:13px 20px;font:800 1.05rem system-ui;color:#145d68;min-width:110px;text-align:center;background:#eaf7f6}.gate-body:before,.gate-body:after{content:'—';position:absolute;color:#4f96a2;font-weight:800;font-size:1.4rem;top:13px}.gate-body:before{left:-24px}.gate-body:after{right:-23px}.led-wrap{font-weight:750;display:flex;gap:11px;align-items:center}.led{display:inline-block;width:22px;height:22px;border-radius:50%;background:#b8c7cc;border:2px solid #849da5}.led.on{background:#22ae7b;border-color:#16865e;box-shadow:0 0 0 5px #d6f4e8}.scrolltable{overflow:auto}.scrolltable table{margin:12px 0}.scrolltable th,.scrolltable td{text-align:center;padding:7px 11px;white-space:nowrap}.scrolltable tr.active{background:#e4f4f0;font-weight:750}.examples{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 13px}.examples button{font-size:.83rem;padding:5px 8px}.expr-line{display:grid;grid-template-columns:1fr auto;align-items:end;gap:10px}.expr-line label{grid-column:1/-1}.expr-line input{margin:0!important}.expr-line button{padding:9px 13px;border-radius:8px}.quiz-q{background:#f8fbfc;border:1px solid #dce8eb;border-radius:12px;padding:17px;margin:15px 0}.quiz-q fieldset{border:0;padding:0;margin:0}.quiz-q legend{font-weight:800;color:#24465a;margin-bottom:10px}.quiz-options{display:grid;gap:7px}.quiz-options label{display:block;padding:8px 10px;border:1px solid #e1eaf0;background:#fff;border-radius:7px;cursor:pointer}.quiz-options label:hover{border-color:#86bbc0}.quiz-options input{accent-color:#167780;margin-right:9px}.quiz-feedback{font-size:.88rem;margin:9px 0 0!important;border-left:3px solid #a7c5cc;padding-left:10px}.quiz-feedback.correct{color:#0b6d52;border-left-color:#28a27e}.quiz-feedback.incorrect{color:#a43f4b;border-left-color:#c75a66}.quiz-score{background:#e8f7f2;padding:15px;border-radius:10px;font-weight:800;font-size:1.06rem;margin:18px 0}.quiz-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.footer{padding:15px;text-align:center;color:#6b7d88;font-size:.82rem}
+@media(max-width:850px){.shell{display:block;padding:16px 12px 46px}.sidebar{position:static;margin-bottom:15px}.sidebar .side-tip{display:none}.sidebar nav{display:flex;overflow-x:auto;gap:6px;padding-bottom:4px}.sidebar a{white-space:nowrap;border:1px solid #dce8eb;background:#f7fafb}.hero{padding:35px 20px 31px}.panel{border-radius:14px;margin-bottom:16px}.unit-track{grid-template-columns:1fr}}
+@media(max-width:560px){.media-grid,.control-grid,.result-grid,.result-grid.two{grid-template-columns:1fr}.boole-band{display:block}.boole-mark{margin-bottom:8px}.panel{padding:19px 14px}.panel table{font-size:.78rem}.panel table th,.panel table td{padding:7px 6px}.base-chip{font-size:1.06rem}.byte-row{gap:2px}.byte-row span{padding:8px 0}.expr-line{display:block}.expr-line button{margin-top:8px;width:100%}.logic-flow span+span:before{display:none}}
+@media print{body{background:white!important}.hero{padding:20px;background:#173b54!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.sidebar,.lab,.quiz-toolbar{display:none!important}.shell{display:block;padding:0}.panel{border:0;box-shadow:none;padding:14px 3px;break-inside:avoid}details{break-inside:avoid}a{color:#0c4d65}}
+</style></head><body><header class="hero"><div class="eyebrow">Módulo universitario · Fundamentos de sistemas digitales</div><h1>Sistemas numéricos y álgebra de Boole</h1><p>Del bit a la lógica digital: bases, codificación de información, unidades y diseño de expresiones booleanas.</p><div class="pills"><span>10 secciones didácticas</span><span>5 laboratorios interactivos</span><span>12 preguntas autocorregibles</span><span>Sin servicios externos</span></div></header><div class="shell"><aside class="sidebar"><strong>Contenido del módulo</strong><nav aria-label="Navegación por secciones"><a href="#intro">Inicio</a><a href="#sistemas">Sistemas numéricos</a><a href="#conversiones">Conversiones</a><a href="#representacion">Información binaria</a><a href="#unidades">Unidades</a><a href="#boole">George Boole</a><a href="#leyes">Leyes booleanas</a><a href="#compuertas">Compuertas</a><a href="#tablas">Tablas y simplificación</a><a href="#aplicaciones">Práctica y síntesis</a><a href="#autoevaluacion">Autoevaluación</a><a href="#fuentes">Referencias</a></nav><div class="side-tip">Avanza en orden, practica las conversiones y comprueba las expresiones mediante tablas de verdad.</div></aside><main class="content"><section id="intro" class="panel"><div class="sec-kicker">SECCIÓN 01</div><h2>Presentación</h2>
+<p class="lead">Las redes de datos, los computadores y los sistemas digitales procesan información mediante <strong>estados discretos</strong>. En este módulo aprenderás a representar cantidades e información como secuencias de bits y a describir decisiones de circuitos con el álgebra de Boole.</p>
+<div class="callout"><strong>Pregunta de inicio.</strong> Cuando un dispositivo recibe la secuencia <code>01000001</code>, ¿recibe el número 65, la letra <strong>A</strong> o una parte de un color? <strong>Depende de la codificación y del contexto.</strong> Los mismos bits pueden tener interpretaciones distintas.</div>
+<h3>Resultados de aprendizaje</h3><ul><li>Diferenciar las bases decimal (10), binaria (2) y hexadecimal (16) y su notación.</li><li>Convertir números enteros entre bases usando métodos posicionales, divisiones y agrupación de bits.</li><li>Explicar cómo texto, imágenes y audio pueden codificarse en binario.</li><li>Distinguir bit, nibble, byte y múltiplos decimales y binarios normalizados.</li><li>Interpretar las leyes y reglas básicas del álgebra de Boole y las compuertas lógicas.</li><li>Construir tablas de verdad, obtener expresiones y simplificarlas.</li></ul>
+<div class="objectives"><span>Estudio autónomo</span><span>Ejemplos resueltos</span><span>Aplicaciones a redes</span><span>Autoevaluación</span></div>
+</section><section id="sistemas" class="panel"><div class="sec-kicker">SECCIÓN 02</div><h2>1. Sistemas numéricos: decimal, binario y hexadecimal</h2>
+<p>Un <strong>sistema de numeración posicional</strong> representa cantidades usando símbolos (dígitos) y el lugar que ocupa cada uno. La <strong>base</strong> indica cuántos símbolos diferentes utiliza y determina el valor de las posiciones: unidades, base, base al cuadrado, etcétera.</p>
+<table><thead><tr><th>Sistema</th><th>Base</th><th>Dígitos permitidos</th><th>Ejemplo</th><th>Uso típico</th></tr></thead><tbody>
+<tr><td>Decimal</td><td>10</td><td>0 a 9</td><td>(45)<sub>10</sub></td><td>Lectura humana de cantidades</td></tr>
+<tr><td>Binario</td><td>2</td><td>0 y 1</td><td>(101101)<sub>2</sub></td><td>Procesamiento y almacenamiento digital</td></tr>
+<tr><td>Hexadecimal</td><td>16</td><td>0 a 9; A, B, C, D, E, F (=10 a 15)</td><td>(2D)<sub>16</sub></td><td>Direcciones MAC, depuración, códigos de color</td></tr>
+</tbody></table>
+<p>La regla general de valor posicional es: <strong>N = Σ (dígito × base<sup>posición</sup>)</strong>, comenzando con la posición 0 desde el extremo derecho.</p>
+<div class="mini-figure"><strong>Un mismo valor en tres sistemas</strong><div class="base-row"><span class="base-chip">45<sub>10</sub></span><span class="base-equal">=</span><span class="base-chip">101101<sub>2</sub></span><span class="base-equal">=</span><span class="base-chip">2D<sub>16</sub></span></div><p class="figcaption">Cambian los símbolos utilizados, no la cantidad que representan.</p></div>
+<h3>Valor posicional: lectura paso a paso</h3>
+<table><thead><tr><th>Posición en binario</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead><tbody>
+<tr><th>Peso (2<sup>n</sup>)</th><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+<tr><th>Bit de 101101</th><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><th>Contribución</th><td>32</td><td>0</td><td>8</td><td>4</td><td>0</td><td>1</td></tr>
+</tbody></table>
+<p><strong>Resultado:</strong> (101101)<sub>2</sub> = 32 + 8 + 4 + 1 = <strong>45<sub>10</sub></strong>.</p>
+<div class="callout secondary"><strong>Atención:</strong> el símbolo «10» no siempre vale diez. (10)<sub>2</sub> vale 2; (10)<sub>16</sub> vale 16.</div>
+</section><section id="conversiones" class="panel"><div class="sec-kicker">SECCIÓN 03</div><h2>2. Conversión entre sistemas numéricos</h2>
+<h3>2.1. De cualquier base a decimal</h3>
+<p>Se multiplica cada dígito por el peso de su posición y se suman los resultados. En hexadecimal, recuerda que A=10, B=11, C=12, D=13, E=14 y F=15.</p>
+<div class="worked"><strong>Ejemplo 1 · Binario a decimal</strong><p>(110101)<sub>2</sub> = 1×2<sup>5</sup> + 1×2<sup>4</sup> + 0×2<sup>3</sup> + 1×2<sup>2</sup> + 0×2<sup>1</sup> + 1×2<sup>0</sup> = 32 + 16 + 4 + 1 = <strong>53<sub>10</sub></strong>.</p></div>
+<div class="worked"><strong>Ejemplo 2 · Hexadecimal a decimal</strong><p>(3A)<sub>16</sub> = 3×16<sup>1</sup> + 10×16<sup>0</sup> = 48 + 10 = <strong>58<sub>10</sub></strong>.</p></div>
+<h3>2.2. De decimal a otra base: divisiones sucesivas</h3>
+<p>Divide el entero entre la base de destino. Anota el <strong>residuo</strong> y vuelve a dividir el cociente entero; repite hasta que sea cero. El resultado se lee con los residuos <strong>del último al primero</strong>.</p>
+<table><thead><tr><th>División por 2</th><th>Cociente</th><th>Residuo</th></tr></thead><tbody><tr><td>45 ÷ 2</td><td>22</td><td>1</td></tr><tr><td>22 ÷ 2</td><td>11</td><td>0</td></tr><tr><td>11 ÷ 2</td><td>5</td><td>1</td></tr><tr><td>5 ÷ 2</td><td>2</td><td>1</td></tr><tr><td>2 ÷ 2</td><td>1</td><td>0</td></tr><tr><td>1 ÷ 2</td><td>0</td><td>1</td></tr></tbody></table>
+<p><strong>Lectura de abajo hacia arriba:</strong> (45)<sub>10</sub> = <strong>(101101)<sub>2</sub></strong>. Para convertir 45 a hexadecimal: 45 ÷ 16 = 2, residuo 13 (=D), por tanto <strong>(2D)<sub>16</sub></strong>.</p>
+<h3>2.3. Conversión directa entre binario y hexadecimal</h3>
+<p>Como <strong>16 = 2<sup>4</sup></strong>, <strong>cada dígito hexadecimal corresponde exactamente a un grupo de 4 bits</strong>. Para pasar de binario a hexadecimal, agrupa bits desde la derecha y completa con ceros a la izquierda cuando haga falta.</p>
+<div class="mini-figure"><strong>Ejemplo: 11010110₂</strong><div class="base-row"><span class="bit-group">1101</span><span class="bit-group alt">0110</span><span class="base-equal">→</span><span class="base-chip">D6<sub>16</sub></span></div><p class="figcaption">1101₂ = D₁₆; 0110₂ = 6₁₆. De hexadecimal a binario se sustituye cada dígito por sus cuatro bits.</p></div>
+<div class="worked"><strong>Ejemplo 3 · Hexadecimal a binario</strong><p>(2F)<sub>16</sub> = 0010 1111<sub>2</sub> = 101111<sub>2</sub> si se omiten los ceros iniciales. El resultado decimal es 2×16 + 15 = <strong>47</strong>.</p></div>
+<h3>2.4. Aplicación a telecomunicaciones</h3><p>El octeto decimal <strong>192</strong> de una dirección IPv4 equivale a <strong>11000000₂</strong> o <strong>C0₁₆</strong>. Una dirección MAC se escribe normalmente con seis octetos hexadecimales, por ejemplo <code>02:1A:2B:00:10:FF</code>. El hexadecimal facilita representar secuencias binarias extensas, pero no cambia su información.</p>
+<div class="lab" id="lab-convert"><div class="lab-head"><span class="lab-tag">LABORATORIO 01</span><h3>Conversor de bases con procedimiento</h3><p>Escribe un <strong>entero no negativo</strong> en la base seleccionada. Se muestran sus equivalentes y el valor posicional.</p></div><div class="control-grid"><label>Valor de entrada<input id="convInput" type="text" value="45" maxlength="32" inputmode="text" autocomplete="off"></label><label>Base de entrada<select id="convBase"><option value="10">Decimal (10)</option><option value="2">Binaria (2)</option><option value="16">Hexadecimal (16)</option></select></label></div><p class="status" id="convError" role="status"></p><div class="result-grid"><div><small>DECIMAL</small><strong id="convDec">45</strong></div><div><small>BINARIO</small><strong id="convBin">101101</strong></div><div><small>HEXADECIMAL</small><strong id="convHex">2D</strong></div></div><div class="explanation" id="convExplain" aria-live="polite"></div></div></section><section id="representacion" class="panel"><div class="sec-kicker">SECCIÓN 04</div><h2>3. Representación binaria de la información</h2>
+<p>Un bit representa una alternativa entre dos estados lógicos, 0 y 1. El hardware puede distinguir estos estados mediante rangos de tensión, carga almacenada, estados magnéticos o señales ópticas. <strong>Un bit no es necesariamente un voltaje fijo</strong>; el circuito define cómo se interpretan físicamente sus niveles.</p>
+<h3>3.1. Números, texto, imágenes y audio</h3>
+<div class="media-grid"><div class="media-tile"><strong>Números</strong><div class="symbol-display">13 → 00001101</div><p>La secuencia de ocho bits codifica el entero no negativo 13.</p></div>
+<div class="media-tile"><strong>Texto</strong><div class="symbol-display">A → 01000001</div><p>En ASCII (y también UTF-8), el carácter A se codifica como 65 decimal = 0x41.</p></div>
+<div class="media-tile"><strong>Imagen digital</strong><div class="pixel-row"><span class="pixel r">R 255</span><span class="pixel g">G 128</span><span class="pixel b">B 0</span></div><p>En RGB de 8 bits por canal: rojo <code>11111111</code>, verde <code>10000000</code>, azul <code>00000000</code>.</p></div>
+<div class="media-tile"><strong>Audio</strong><div class="symbol-display">muestra → bits</div><p>Un conversor analógico-digital toma muestras y cuantifica amplitudes; la representación depende de la resolución y el formato.</p></div></div>
+<div class="callout"><strong>Una secuencia, varias interpretaciones.</strong> <code>01000001</code> puede interpretarse como el número 65, la letra A en ASCII/UTF-8 o el valor de un canal de color. Es el <em>formato</em> el que otorga significado a los bits.</div>
+<h3>3.2. ASCII y Unicode: diferencia importante</h3>
+<p><strong>ASCII</strong> define un repertorio básico codificado tradicionalmente con 7 bits (valores 0–127). <strong>Unicode</strong> define puntos de código para muchísimos caracteres; <strong>UTF-8</strong> los transforma en secuencias de 1 a 4 bytes por punto de código. La letra <strong>A</strong> ocupa 1 byte en UTF-8, mientras que <strong>ñ</strong> ocupa 2 bytes en UTF-8. Por tanto, un carácter no equivale siempre a un byte.</p>
+<div class="worked"><strong>Ejemplo</strong><p>Texto <code>A</code> → UTF-8 <code>41</code> hex → <code>01000001</code>. Texto <code>ñ</code> → UTF-8 <code>C3 B1</code> hex → <code>11000011 10110001</code>.</p></div>
+<h3>3.3. Cómo viajan estos bits por una red</h3><p>Las aplicaciones producen datos estructurados (por ejemplo, texto UTF-8). Los protocolos los encapsulan y un medio físico transporta las señales correspondientes. En el extremo receptor, los bits deben ser interpretados según los protocolos y la codificación acordados. Los medios de transmisión pueden ser eléctricos, ópticos o radioeléctricos.</p>
+<div class="lab" id="lab-utf8"><div class="lab-head"><span class="lab-tag">LABORATORIO 02</span><h3>Del texto a bytes UTF-8</h3><p>Cambia el texto para explorar que no todos los caracteres ocupan un byte.</p></div><label>Texto para codificar<input id="utfInput" value="Año" maxlength="48" autocomplete="off"></label><div class="result-grid two"><div><small>BYTES UTF-8</small><strong id="utfCount">4</strong></div><div><small>SECUENCIA HEXADECIMAL</small><strong id="utfHex">41 C3 B1 6F</strong></div></div><div class="explanation mono-wrap" id="utfBinary"></div></div></section><section id="unidades" class="panel"><div class="sec-kicker">SECCIÓN 05</div><h2>4. Unidades de información y sus múltiplos</h2>
+<h3>4.1. Bit, nibble y byte</h3><p>El <strong>bit (b)</strong> es la unidad elemental de información binaria. Un <strong>nibble</strong> reúne <strong>4 bits</strong>; un <strong>byte (B)</strong> reúne <strong>8 bits</strong>. Dos nibbles forman un byte, por lo que un byte se representa cómodamente con dos dígitos hexadecimales.</p>
+<div class="byte-diagram" role="img" aria-label="Un byte formado por ocho bits, agrupado en dos nibbles de cuatro bits"><div class="byte-label">1 byte = 8 bits</div><div class="byte-row"><span>1</span><span>1</span><span>0</span><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span></div><div class="byte-row-desc"><span>Nibble alto: 1101 (D)</span><span>Nibble bajo: 0110 (6)</span></div><p class="figcaption">11010110₂ = D6₁₆</p></div>
+<h3>4.2. Múltiplos decimales (SI) y binarios (IEC)</h3>
+<p>En el sistema decimal cada nivel multiplica por <strong>1000</strong> (10<sup>3</sup>). En el sistema binario de prefijos IEC cada nivel multiplica por <strong>1024</strong> (2<sup>10</sup>). Para evitar ambigüedades, se distinguen símbolos como <strong>MB</strong> y <strong>MiB</strong>.</p>
+<table><thead><tr><th>Nivel</th><th>Decimal (SI)</th><th>Valor en bytes</th><th>Binario (IEC)</th><th>Valor en bytes</th></tr></thead><tbody>
+<tr><td>kilo / kibi</td><td>1 kB</td><td>1 000</td><td>1 KiB</td><td>1 024</td></tr>
+<tr><td>mega / mebi</td><td>1 MB</td><td>1 000 000</td><td>1 MiB</td><td>1 048 576</td></tr>
+<tr><td>giga / gibi</td><td>1 GB</td><td>1 000 000 000</td><td>1 GiB</td><td>1 073 741 824</td></tr>
+<tr><td>tera / tebi</td><td>1 TB</td><td>1 000 000 000 000</td><td>1 TiB</td><td>1 099 511 627 776</td></tr></tbody></table>
+<div class="mini-figure"><strong>Escalas comparadas</strong><div class="unit-track"><div><b>Decimal</b><span>B → kB → MB → GB → TB</span><small>× 1000 en cada salto</small></div><div><b>Binaria</b><span>B → KiB → MiB → GiB → TiB</span><small>× 1024 en cada salto</small></div></div></div>
+<div class="worked"><strong>Ejemplo · Comparación de capacidades</strong><p>1 GB = 1 000 000 000 bytes. Si se expresa la misma cantidad en GiB: 1 000 000 000 ÷ 1 073 741 824 ≈ <strong>0,931 GiB</strong>. No se han perdido bytes; solo se ha cambiado la unidad de medida.</p></div>
+<div class="callout warning"><strong>No confundir:</strong> <strong>b</strong> minúscula significa bit y <strong>B</strong> mayúscula significa byte. Así, <strong>100 Mb/s</strong> equivale nominalmente a <strong>12,5 MB/s</strong> antes de considerar protocolos, codificación y otras sobrecargas de transmisión. Los prefijos SI son estrictamente decimales; los binarios llevan «i» (Ki, Mi, Gi...).</div>
+<div class="lab" id="lab-units"><div class="lab-head"><span class="lab-tag">LABORATORIO 03</span><h3>Comparador de múltiplos</h3><p>Observa cómo cambia la cantidad de bytes con la unidad elegida.</p></div><div class="control-grid"><label>Cantidad<input id="unitCount" type="number" min="0" max="9999" step="0.5" value="1"></label><label>Unidad<select id="unitKind"><option value="MB">MB (decimal)</option><option value="MiB">MiB (binario)</option><option value="GB">GB (decimal)</option><option value="GiB">GiB (binario)</option><option value="kB">kB (decimal)</option><option value="KiB">KiB (binario)</option><option value="TB">TB (decimal)</option><option value="TiB">TiB (binario)</option></select></label></div><p id="unitResult" class="explanation" aria-live="polite"></p></div></section><section id="boole" class="panel"><div class="sec-kicker">SECCIÓN 06</div><h2>5. George Boole y la lógica binaria</h2>
+<p>El matemático británico <strong>George Boole (1815–1864)</strong> desarrolló una formulación algebraica del razonamiento lógico. Su obra <em>An Investigation of the Laws of Thought</em> (1854) contribuyó al fundamento matemático de la lógica simbólica. En el siglo XX, la conexión entre operaciones booleanas y circuitos de conmutación hizo que estas ideas fueran esenciales para la electrónica digital.</p>
+<div class="boole-band"><div class="boole-mark">0 <span>⇄</span> 1</div><div><strong>Dos valores, muchas decisiones</strong><p>En el álgebra booleana elemental una variable vale <strong>0 (falso)</strong> o <strong>1 (verdadero)</strong>. Las operaciones básicas permiten combinar condiciones y obtener una salida.</p></div></div>
+<p>Ejemplo aplicado: un servidor debe activar una alarma cuando <strong>falla el enlace principal (A=1)</strong> O <strong>falla el enlace de respaldo (B=1)</strong>. La salida puede representarse como <strong>F = A + B</strong>, donde el signo + es la operación lógica OR, <em>no</em> una suma aritmética ordinaria.</p>
+<h3>5.1. Operaciones lógicas esenciales</h3>
+<table><thead><tr><th>Operación</th><th>Símbolo habitual</th><th>Se obtiene 1 cuando…</th><th>Ejemplo</th></tr></thead><tbody>
+<tr><td>NOT (negación)</td><td>¬A o A̅</td><td>La entrada A vale 0.</td><td>¬0 = 1</td></tr>
+<tr><td>AND (conjunción)</td><td>A·B</td><td>Ambas entradas valen 1.</td><td>1·0 = 0</td></tr>
+<tr><td>OR (disyunción)</td><td>A+B</td><td>Al menos una entrada vale 1.</td><td>1+0 = 1</td></tr>
+<tr><td>XOR (OR exclusivo)</td><td>A⊕B</td><td>Las entradas tienen valores diferentes.</td><td>1⊕1 = 0</td></tr>
+</tbody></table>
+</section><section id="leyes" class="panel"><div class="sec-kicker">SECCIÓN 07</div><h2>6. Leyes y reglas del álgebra de Boole</h2>
+<p>Las identidades booleanas permiten reemplazar una expresión por otra <strong>equivalente para todas las combinaciones de entrada</strong>. Se usan para razonar, simplificar condiciones de software y reducir la complejidad lógica de un circuito.</p>
+<table><thead><tr><th>Ley o regla</th><th>OR (+)</th><th>AND (·) / NOT (¬)</th></tr></thead><tbody>
+<tr><td>Identidad</td><td>A + 0 = A</td><td>A·1 = A</td></tr>
+<tr><td>Dominación</td><td>A + 1 = 1</td><td>A·0 = 0</td></tr>
+<tr><td>Idempotencia</td><td>A + A = A</td><td>A·A = A</td></tr>
+<tr><td>Complemento</td><td>A + ¬A = 1</td><td>A·¬A = 0</td></tr>
+<tr><td>Conmutativa</td><td>A + B = B + A</td><td>A·B = B·A</td></tr>
+<tr><td>Asociativa</td><td>(A+B)+C = A+(B+C)</td><td>(A·B)·C = A·(B·C)</td></tr>
+<tr><td>Distributiva</td><td>A+(B·C) = (A+B)·(A+C)</td><td>A·(B+C) = A·B + A·C</td></tr>
+<tr><td>Absorción</td><td>A + A·B = A</td><td>A·(A+B) = A</td></tr>
+<tr><td>Doble negación</td><td>¬(¬A)=A</td><td>—</td></tr>
+<tr><td>De Morgan</td><td>¬(A+B)=¬A·¬B</td><td>¬(A·B)=¬A+¬B</td></tr>
+</tbody></table>
+<h3>6.1. Ejemplo desarrollado: absorción</h3>
+<div class="worked"><strong>Simplificar F = A + A·B</strong><ol><li>Aplicamos la ley de absorción: A + A·B = A.</li><li>Si A=1, F=1 independientemente de B; si A=0, ambos términos valen 0.</li><li><strong>Resultado mínimo:</strong> F = A. La variable B ya no interviene en la salida.</li></ol></div>
+<h3>6.2. Ejemplo desarrollado: leyes de De Morgan</h3>
+<div class="worked"><strong>Transformar F = ¬(A+B)</strong><ol><li>La negación afecta al resultado completo de OR.</li><li>Por De Morgan, se niega cada variable y se cambia OR por AND.</li><li><strong>F = ¬A·¬B</strong>; solo es 1 cuando A=0 y B=0.</li></ol></div>
+<div class="callout secondary"><strong>Jerarquía de operaciones:</strong> primero paréntesis y NOT; después AND; finalmente OR. XOR suele indicarse explícitamente con ⊕ y es recomendable agruparla con paréntesis en expresiones complejas para evitar dudas.</div>
+</section><section id="compuertas" class="panel"><div class="sec-kicker">SECCIÓN 08</div><h2>7. Compuertas lógicas y expresiones booleanas</h2>
+<p>Una <strong>compuerta lógica</strong> es un bloque digital que implementa una función booleana. Puede construirse con transistores y utilizarse, por ejemplo, en procesadores, memoria, control industrial y dispositivos de red. Sus entradas y salidas se describen por niveles lógicos 0 y 1.</p>
+<table><thead><tr><th>Compuerta</th><th>Expresión</th><th>Comportamiento</th><th>Salidas para AB = 00, 01, 10, 11</th></tr></thead><tbody>
+<tr><td>NOT</td><td>¬A</td><td>Invierte A (solo una entrada).</td><td>A=0 → 1; A=1 → 0</td></tr>
+<tr><td>AND</td><td>A·B</td><td>Ambas condiciones verdaderas.</td><td>0, 0, 0, 1</td></tr>
+<tr><td>OR</td><td>A+B</td><td>Una o ambas condiciones verdaderas.</td><td>0, 1, 1, 1</td></tr>
+<tr><td>NAND</td><td>¬(A·B)</td><td>Negación de AND.</td><td>1, 1, 1, 0</td></tr>
+<tr><td>NOR</td><td>¬(A+B)</td><td>Negación de OR.</td><td>1, 0, 0, 0</td></tr>
+<tr><td>XOR</td><td>A⊕B</td><td>Entradas diferentes.</td><td>0, 1, 1, 0</td></tr>
+<tr><td>XNOR</td><td>¬(A⊕B)</td><td>Entradas iguales.</td><td>1, 0, 0, 1</td></tr>
+</tbody></table>
+<h3>7.1. De un problema cotidiano a una expresión</h3><p>Una puerta de seguridad se abre si existe <strong>credencial válida A</strong> <em>y</em> <strong>autorización del operador B</strong>, pero solo si <strong>no hay bloqueo C</strong>. Su función es <strong>F = A·B·¬C</strong>. Para describir un sistema en lógica digital es necesario asignar significado a 0 y 1 en cada variable y escribir las condiciones exactamente.</p>
+<div class="mini-figure"><strong>Secuencia lógica del ejemplo</strong><div class="logic-flow"><span>Credencial A</span><span>AND con B</span><span>AND con ¬C</span><span>Salida F</span></div><p class="figcaption">La salida es 1 únicamente cuando A=1, B=1 y C=0.</p></div>
+<h3>7.2. Circuitos equivalentes</h3><p>Dos expresiones pueden utilizar distintas cantidades de compuertas y producir la <strong>misma tabla de verdad</strong>. Por ejemplo, <strong>F = A·B + A·¬B</strong> equivale a <strong>F = A</strong>; el circuito simplificado necesita menos operaciones lógicas.</p>
+<div class="lab" id="lab-gates"><div class="lab-head"><span class="lab-tag">LABORATORIO 04</span><h3>Experimenta con compuertas</h3><p>Selecciona una compuerta y conmuta sus entradas A y B. Observa la salida F y su tabla de verdad.</p></div><div class="control-grid"><label>Compuerta<select id="gateSelect"><option>AND</option><option>OR</option><option>NOT</option><option>NAND</option><option>NOR</option><option>XOR</option><option>XNOR</option></select></label><div class="toggle-group"><label><input id="inputA" type="checkbox" checked> Entrada A = <b id="inAValue">1</b></label><label id="inputBWrap"><input id="inputB" type="checkbox"> Entrada B = <b id="inBValue">0</b></label></div></div><div class="gate-circuit"><span id="gateInA">A = 1</span><div class="gate-body" id="gateBody">AND</div><span class="led-wrap">F = <strong id="gateOutput">0</strong><span class="led" id="gateLed" aria-hidden="true"></span></span></div><p class="figcaption" id="gateFormula">F = A·B</p><div id="gateTruth"></div></div></section><section id="tablas" class="panel"><div class="sec-kicker">SECCIÓN 09</div><h2>8. Tablas de verdad y simplificación de expresiones</h2>
+<p>Una <strong>tabla de verdad</strong> enumera todas las combinaciones posibles de entrada y muestra la salida para cada una. Si hay <strong>n</strong> entradas binarias independientes, hay <strong>2<sup>n</sup> filas</strong>; dos entradas requieren 4 filas, tres entradas requieren 8.</p>
+<h3>8.1. Construcción de una tabla de verdad</h3><p>Considera <strong>F = (A·B) + ¬C</strong>. Primero escribe las 8 combinaciones de A, B y C; luego calcula AND, NOT y OR.</p>
+<table><thead><tr><th>A</th><th>B</th><th>C</th><th>A·B</th><th>¬C</th><th>F</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td><strong>1</strong></td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td><strong>0</strong></td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td><strong>1</strong></td></tr>
+<tr><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td><strong>0</strong></td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td><strong>1</strong></td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><strong>0</strong></td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td><strong>1</strong></td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td><strong>1</strong></td></tr>
+</tbody></table>
+<h3>8.2. Expresión desde una tabla: suma de productos</h3><p>Se identifican las filas con <strong>F=1</strong>, se forma un producto AND por cada fila (variable negada si su valor es 0) y se suman con OR. Esta forma se denomina <strong>suma de productos (SOP)</strong> o suma de minterminos antes de simplificar.</p>
+<div class="worked"><strong>Ejemplo · Función XOR de dos entradas</strong><p>F=1 para A=0,B=1 y para A=1,B=0. Por tanto, <strong>F = ¬A·B + A·¬B = A⊕B</strong>.</p></div>
+<h3>8.3. Simplificación algebraica paso a paso</h3>
+<div class="worked"><strong>Problema · F = A·B + A·¬B</strong><ol><li><strong>Factor común:</strong> F = A·(B + ¬B).</li><li><strong>Complemento:</strong> B + ¬B = 1.</li><li><strong>Identidad:</strong> F = A·1 = <strong>A</strong>.</li></ol><p>La variable B no cambia la salida; la expresión original y la reducida tienen los mismos resultados para todas las entradas.</p></div>
+<h3>8.4. Otras técnicas de simplificación</h3><p>Para funciones con varias variables, además de las leyes algebraicas pueden emplearse <strong>mapas de Karnaugh</strong> o el procedimiento tabular de <strong>Quine–McCluskey</strong>. Ambos buscan cubrir las combinaciones que producen 1 mediante términos más generales. En esta introducción trabajaremos principalmente con identidades algebraicas y verificación mediante tablas de verdad.</p>
+<div class="callout warning"><strong>Comprobación indispensable:</strong> una simplificación no es válida solo porque use menos símbolos; debe conservar la salida en <strong>todas</strong> las combinaciones de entrada.</div>
+<div class="lab" id="lab-truth"><div class="lab-head"><span class="lab-tag">LABORATORIO 05</span><h3>Generador de tablas de verdad y simplificación</h3><p>Admite variables A, B, C y D; usa <code>¬</code> para NOT, <code>·</code> para AND, <code>+</code> para OR y <code>⊕</code> para XOR. Escribe AND explícitamente (por ejemplo, <code>A·B</code>).</p></div><div class="examples"><button type="button" class="exampleBtn" data-expr="(A·B)+(A·¬B)">A·B + A·¬B</button><button type="button" class="exampleBtn" data-expr="¬(A+B)">¬(A+B)</button><button type="button" class="exampleBtn" data-expr="(A·B)+¬C">A·B + ¬C</button><button type="button" class="exampleBtn" data-expr="A⊕B">A⊕B</button></div><div class="expr-line"><label for="exprInput">Expresión lógica</label><input id="exprInput" type="text" value="(A·B)+(A·¬B)" maxlength="120" spellcheck="false"><button type="button" id="exprGenerate">Generar tabla</button></div><p class="status" id="exprError" role="alert"></p><div class="explanation" id="exprSummary" aria-live="polite"></div><div id="truthOutput" class="scrolltable"></div><p class="figcaption">La expresión simplificada se calcula como suma mínima de productos para un máximo de cuatro variables, sin condiciones indiferentes.</p></div></section><section id="aplicaciones" class="panel"><div class="sec-kicker">SECCIÓN 10</div><h2>9. Aplicaciones, ejercicios guiados y síntesis</h2>
+<h3>9.1. Un ejemplo que conecta todos los temas</h3>
+<p>Un dispositivo IoT registra el número decimal <strong>45</strong> como <strong>00101101₂</strong>, equivalente a <strong>2D₁₆</strong>. Son <strong>8 bits (1 byte)</strong>. Una compuerta lógica puede utilizar señales adicionales para decidir si el dato debe transmitirse: si la medición está lista <strong>A</strong> y existe conectividad <strong>B</strong>, entonces <strong>F = A·B</strong>.</p>
+<h3>9.2. Actividades de práctica</h3>
+<details><summary>Ejercicio 1 · Convierte (10101101)₂ a decimal y hexadecimal</summary><p><strong>Solución:</strong> 128+32+8+4+1 = <strong>173₁₀</strong>. Agrupando: 1010 1101 = <strong>AD₁₆</strong>.</p></details>
+<details><summary>Ejercicio 2 · Convierte (94)₁₀ a binario</summary><p><strong>Solución:</strong> 94=64+16+8+4+2, por lo que (94)₁₀ = <strong>(1011110)₂</strong>.</p></details>
+<details><summary>Ejercicio 3 · ¿Cuántos bytes representan 3 MiB y 3 MB?</summary><p><strong>Solución:</strong> 3 MiB = <strong>3 145 728 B</strong>; 3 MB = <strong>3 000 000 B</strong>.</p></details>
+<details><summary>Ejercicio 4 · Simplifica A + A·B</summary><p><strong>Solución:</strong> ley de absorción: <strong>A + A·B = A</strong>.</p></details>
+<details><summary>Ejercicio 5 · ¿Cuándo vale 1 la expresión ¬A·B?</summary><p><strong>Solución:</strong> exclusivamente cuando <strong>A=0 y B=1</strong>.</p></details>
+<div class="callout secondary"><strong>Síntesis de la unidad:</strong> las bases describen cómo escribimos cantidades; la codificación determina cómo interpretamos bits; las unidades cuantifican su tamaño; y el álgebra booleana explica cómo los circuitos digitales procesan condiciones binarias.</div>
+</section><section class="panel" id="autoevaluacion"><div class="sec-kicker">VERIFICACIÓN DEL APRENDIZAJE</div><h2>Autoevaluación</h2><p>Responde las 12 preguntas y utiliza la corrección para identificar conceptos que necesites repasar. La puntuación solo aparece en tu navegador, sin registro en Canvas LMS.</p><div id="quizItems"></div><div class="quiz-toolbar"><button class="primary" type="button" id="quizGrade">Corregir mis respuestas</button><button type="button" id="quizReset">Volver a intentar</button></div><div id="quizScore" class="quiz-score" role="status" hidden></div></section><section id="fuentes" class="panel"><div class="sec-kicker">SECCIÓN 11</div><h2>10. Lecturas y recursos de consulta</h2>
+<p>Las siguientes fuentes permiten ampliar conceptos y comprobar nomenclatura técnica:</p>
+<ol><li>National Institute of Standards and Technology (NIST). <a href="https://physics.nist.gov/cuu/Units/binary.html" target="_blank" rel="noopener noreferrer">Prefixes for binary multiples</a>. Diferencias entre prefijos SI e IEC.</li>
+<li>NIST. <a href="https://www.nist.gov/pml/special-publication-330/sp-330-section-3" target="_blank" rel="noopener noreferrer">SP 330, Section 3</a>. Prefijos normalizados del sistema internacional.</li>
+<li>The Unicode Consortium. <a href="https://www.unicode.org/standard/standard.html" target="_blank" rel="noopener noreferrer">The Unicode Standard</a>. Caracteres, puntos de código y codificaciones.</li>
+<li>Boole, G. (1854). <em>An Investigation of the Laws of Thought</em>. Obra histórica sobre el álgebra lógica.</li>
+<li>Mano, M. M., &amp; Ciletti, M. D. (2013). <em>Digital Design</em> (5.ª ed.). Pearson. Texto de referencia sobre sistemas digitales y álgebra de Boole.</li></ol>
+<p class="muted">Material para estudio introductorio universitario. En los ejercicios de conversión se trabajan números enteros no negativos; los números negativos, fraccionarios y su representación específica se estudian en unidades posteriores.</p>
+</section></main></div><footer class="footer">Módulo de autoestudio universitario · No registra calificaciones en Canvas LMS.</footer><script>
+'use strict';
+const $=id=>document.getElementById(id);
+const fmt=n=>Number(n).toLocaleString('es-ES',{maximumFractionDigits:6});
+const h=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function initConversion(){
+  const src=$('convInput').value.trim().toUpperCase().replace(/\s+/g,'');
+  const base=Number($('convBase').value); const err=$('convError'); err.textContent='';
+  const pattern=base===2?/^[01]+$/:base===10?/^[0-9]+$/:/^[0-9A-F]+$/;
+  if(!src || !pattern.test(src)){err.textContent='Introduce un entero válido en la base seleccionada (sin signo, prefijos ni separadores).'; ['convDec','convBin','convHex'].forEach(id=>$(id).textContent='—');$('convExplain').textContent='';return;}
+  let n=0n; const digits='0123456789ABCDEF'; for(const char of src){n=n*BigInt(base)+BigInt(digits.indexOf(char));}
+  if(n>BigInt('18446744073709551615')){err.textContent='Este simulador admite hasta 2⁶⁴−1.';return;}
+  $('convDec').textContent=n.toString(10); $('convBin').textContent=n.toString(2); $('convHex').textContent=n.toString(16).toUpperCase();
+  const terms=[];const vals=src.split('');for(let i=0;i<vals.length;i++){const d=digits.indexOf(vals[i]);const p=vals.length-1-i;if(d)terms.push(`${d} × ${base}^${p}`);}
+  let steps='';let temp=n; const rem=[];const target=base===10?2:10;
+  if(temp===0n) rem.push('0');
+  else while(temp>0n && rem.length<68){let q=temp/BigInt(target),r=temp%BigInt(target);rem.push(`${temp} ÷ ${target} = ${q} (residuo ${r})`);temp=q;}
+  $('convExplain').textContent=`Descomposición posicional: ${terms.join(' + ')||'0'} = ${n.toString(10)}.\n`+(base===10?'Conversión a base 2 por divisiones: ':'Verificación en decimal (base 10) por divisiones: ')+rem.join(' · ')+'.';
+  $('convExplain').style.whiteSpace='pre-wrap';
+}
+function initUTF(){
+ const text=$('utfInput').value;const bytes=new TextEncoder().encode(text);
+ $('utfCount').textContent=bytes.length.toString();
+ $('utfHex').textContent=Array.from(bytes,b=>b.toString(16).toUpperCase().padStart(2,'0')).join(' ')||'—';
+ $('utfBinary').textContent=Array.from(bytes,b=>b.toString(2).padStart(8,'0')).join('  ')||'Escribe algún carácter para ver sus bits.';
+}
+function initUnit(){
+ const map={kB:1e3,KiB:1024,MB:1e6,MiB:1048576,GB:1e9,GiB:1073741824,TB:1e12,TiB:1099511627776};
+ const raw=Number($('unitCount').value);let n=Number.isFinite(raw)?Math.max(0,Math.min(9999,raw)):0;
+ const unit=$('unitKind').value;const bytes=n*map[unit];
+ $('unitResult').textContent=`${fmt(n)} ${unit} = ${fmt(bytes)} bytes = ${fmt(bytes*8)} bits. Equivalente: ${fmt(bytes/(unit.includes('i')?1e6:1048576))} ${unit.includes('i')?'MB':'MiB'}.`;
+}
+const gates={AND:{symbol:'A·B',fn:(a,b)=>a&b},OR:{symbol:'A+B',fn:(a,b)=>a|b},NOT:{symbol:'¬A',fn:a=>1-a},NAND:{symbol:'¬(A·B)',fn:(a,b)=>1-(a&b)},NOR:{symbol:'¬(A+B)',fn:(a,b)=>1-(a|b)},XOR:{symbol:'A⊕B',fn:(a,b)=>a^b},XNOR:{symbol:'¬(A⊕B)',fn:(a,b)=>1-(a^b)}};
+function initGate(){
+ const type=$('gateSelect').value;const a=Number($('inputA').checked),b=Number($('inputB').checked);const isNot=type==='NOT';
+ $('inputBWrap').hidden=isNot;$('inAValue').textContent=a;$('inBValue').textContent=b;
+ $('gateInA').textContent=`A=${a}`+(isNot?'':` · B=${b}`);$('gateBody').textContent=type;
+ const f=gates[type].fn(a,b);$('gateOutput').textContent=f;$('gateLed').classList.toggle('on',!!f);
+ $('gateFormula').textContent=`F = ${gates[type].symbol}`;
+ let rows='';for(let x=0;x<2;x++)for(let y=0;y<(isNot?1:2);y++){const v=gates[type].fn(x,y);rows+=`<tr class="${x===a&&(isNot||y===b)?'active':''}"><td>${x}</td>${isNot?'':`<td>${y}</td>`}<td><strong>${v}</strong></td></tr>`;}
+ $('gateTruth').innerHTML=`<div class="scrolltable"><table><thead><tr><th>A</th>${isNot?'':'<th>B</th>'}<th>F</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+// Recursive-descent parser: explicit AND is required; no eval() or dynamic code execution.
+function tokensFor(input){
+ const result=[];const s=input.toUpperCase();let p=0;
+ while(p<s.length){const tail=s.slice(p);if(/\s/.test(s[p])){p++;continue;}
+ const word=tail.match(/^(AND|OR|XOR|NOT)(?![A-Z0-9])/);
+ if(word){result.push(({AND:'&',OR:'|',XOR:'^',NOT:'!'})[word[1]]);p+=word[1].length;continue;}
+ const c=s[p];if('ABCD01()'.includes(c))result.push(c);else if('¬!~'.includes(c))result.push('!');else if('·*&∧'.includes(c))result.push('&');else if('+|∨'.includes(c))result.push('|');else if('^⊕'.includes(c))result.push('^');else throw Error(`Símbolo no reconocido: «${c}». Solo A–D, 0, 1 y operadores lógicos.`);p++;
+ }return result;
+}
+function parseExpr(expr){
+ const toks=tokensFor(expr);if(!toks.length)throw Error('Escribe una expresión lógica.');let p=0;
+ function primary(){const t=toks[p++];if(t==='('){let x=or();if(toks[p++]!==')')throw Error('Falta cerrar un paréntesis.');return x;}
+ if(t==='0'||t==='1')return {t:'num',v:Number(t)};
+ if('ABCD'.includes(t||'?') && t?.length===1)return{t:'var',v:t};
+ throw Error('Revisa la expresión: usa A·B (no AB) y completa los paréntesis.');}
+ function unary(){if(toks[p]==='!'){p++;return{t:'not',x:unary()}}return primary()}
+ function and(){let x=unary();while(toks[p]==='&'){p++;x={t:'and',a:x,b:unary()};}return x}
+ function xor(){let x=and();while(toks[p]==='^'){p++;x={t:'xor',a:x,b:and()};}return x}
+ function or(){let x=xor();while(toks[p]==='|'){p++;x={t:'or',a:x,b:xor()};}return x}
+ const tree=or();if(p!==toks.length)throw Error('Quedan símbolos sin procesar; comprueba los operadores y paréntesis.');return tree;
+}
+function evalTree(tree,values){if(tree.t==='var')return values[tree.v];if(tree.t==='num')return tree.v;
+ if(tree.t==='not')return 1-evalTree(tree.x,values);
+ const a=evalTree(tree.a,values),b=evalTree(tree.b,values);
+ if(tree.t==='and')return a&b;if(tree.t==='or')return a|b;return a^b;
+}
+function collectVars(node,set){if(node.t==='var')set.add(node.v);else if(node.t==='not')collectVars(node.x,set);else if(node.a){collectVars(node.a,set);collectVars(node.b,set)}}
+function bitString(m,n){return m.toString(2).padStart(n,'0')}
+function QMC(minterms,vars){
+ const n=vars.length;if(!minterms.length)return '0';if(minterms.length===2**n)return '1';
+ let group=minterms.map(m=>({pattern:bitString(m,n),covers:new Set([m]),used:false}));const primes=[];
+ while(group.length){for(const item of group)item.used=false;const next=new Map();
+ for(let i=0;i<group.length;i++)for(let j=i+1;j<group.length;j++){
+ const a=group[i].pattern,b=group[j].pattern;let diffs=0,diffAt=-1;
+ for(let k=0;k<n;k++)if(a[k]!==b[k]){diffs++;diffAt=k;}
+ if(diffs===1 && a[diffAt]!=='-' && b[diffAt]!=='-'){
+ group[i].used=true;group[j].used=true;
+ const pattern=a.slice(0,diffAt)+'-'+a.slice(diffAt+1);
+ if(!next.has(pattern))next.set(pattern,{pattern,covers:new Set(),used:false});
+ for(const m of group[i].covers)next.get(pattern).covers.add(m);
+ for(const m of group[j].covers)next.get(pattern).covers.add(m);
+ }}
+ for(const item of group)if(!item.used&&!primes.some(pr=>pr.pattern===item.pattern))primes.push(item);
+ group=[...next.values()];
+ }
+ const match=(p,m)=>{const bs=bitString(m,n);return [...p].every((c,k)=>c==='-'||c===bs[k])};
+ const target=new Set(minterms);let best=null;
+ function search(remaining,choice){
+  if(remaining.size===0){const cost=[choice.length,choice.reduce((tot,p)=>tot+[...p.pattern].filter(c=>c!=='-').length,0)];if(!best||cost[0]<best.cost[0]||(cost[0]===best.cost[0]&&cost[1]<best.cost[1]))best={cost,choice:[...choice]};return;}
+  if(best&&choice.length>=best.cost[0])return;
+  const uncovered=[...remaining].sort((a,b)=>primes.filter(p=>match(p.pattern,a)).length-primes.filter(p=>match(p.pattern,b)).length)[0];
+  for(const prime of primes.filter(p=>match(p.pattern,uncovered))){if(choice.includes(prime))continue;
+    const left=new Set([...remaining].filter(m=>!match(prime.pattern,m)));
+    search(left,[...choice,prime]);
+  }
+ }
+ search(target,[]);
+ if(!best)return '(no disponible)';
+ return best.choice.map(pr=>{const parts=[];for(let i=0;i<n;i++){if(pr.pattern[i]==='1')parts.push(vars[i]);else if(pr.pattern[i]==='0')parts.push('¬'+vars[i]);}return parts.join('·')||'1';}).sort().join(' + ');
+}
+function truth(){
+ const input=$('exprInput').value.trim();try{
+ const tree=parseExpr(input),vs=new Set();collectVars(tree,vs);const names=[...vs].sort();
+ const n=names.length,total=2**n;let data=[];let rows='';const mins=[];
+ for(let i=0;i<total;i++){
+ let values={};for(let j=0;j<n;j++)values[names[j]]=Number((i>>(n-j-1))&1);
+ const f=evalTree(tree,values);if(f)mins.push(i);data.push({values,f});
+ rows+=`<tr>${names.map(name=>`<td>${values[name]}</td>`).join('')}<td><strong>${f}</strong></td></tr>`;
+ }
+ const simp=QMC(mins,names);
+ $('exprSummary').textContent=`Variables: ${names.join(', ')||'ninguna (constante)'} · ${total} combinación(es) · ${mins.length} fila(s) con salida 1. Forma simplificada (suma de productos): F = ${simp}.`;
+ $('truthOutput').innerHTML=`<table><thead><tr>${names.map(v=>`<th>${v}</th>`).join('')}<th>F</th></tr></thead><tbody>${rows}</tbody></table>`;
+ $('exprError').textContent='';
+ }catch(e){$('exprError').textContent=e.message;$('exprSummary').textContent='';$('truthOutput').textContent='';}
+}
+const questions=[["¿Cuál es el equivalente decimal de (101101)₂?", ["41", "45", "53", "61"], 1, "101101₂ = 32 + 8 + 4 + 1 = 45₁₀."], ["¿Qué representa (2F)₁₆ en decimal?", ["31", "42", "47", "216"], 2, "2×16 + F(15) = 47."], ["¿Cuál es el binario de (13)₁₀?", ["1011", "1101", "1110", "1001"], 1, "13 = 8 + 4 + 1 = 1101₂."], ["Un nibble equivale a…", ["2 bits", "4 bits", "8 bits", "16 bits"], 1, "Un nibble está formado por cuatro bits."], ["¿Qué cantidad corresponde exactamente a 1 MiB?", ["1 000 B", "1 024 B", "1 000 000 B", "1 048 576 B"], 3, "MiB utiliza potencias de dos: 2²⁰ = 1 048 576 bytes."], ["En la notación MB, la letra B mayúscula significa…", ["bit", "byte", "baudio", "bloque"], 1, "B representa byte; b representa bit."], ["En UTF-8, ¿cuántos bytes ocupa normalmente la letra ñ?", ["1", "2", "3", "4"], 1, "El punto de código U+00F1 se representa en UTF-8 como C3 B1 (dos bytes)."], ["¿Cuál es la salida de XOR con A=1 y B=1?", ["0", "1", "No está definida", "Depende del voltaje"], 0, "XOR produce 1 solo si las entradas son diferentes."], ["La expresión ¬(A+B) equivale a…", ["¬A+¬B", "A·B", "¬A·¬B", "A+¬B"], 2, "Por De Morgan, la negación de un OR es AND de las negaciones."], ["Simplifica A + A·B.", ["A", "B", "A·B", "1"], 0, "Se aplica la ley de absorción: A + A·B = A."], ["¿Cuántas filas tiene la tabla de verdad de 3 entradas?", ["3", "6", "8", "16"], 2, "Con n=3 variables hay 2³=8 combinaciones posibles."], ["Simplifica F = A·B + A·¬B.", ["A", "B", "A+B", "¬A"], 0, "Factoriza A: A(B+¬B)=A·1=A."]];
+function renderQuiz(){
+ $('quizItems').innerHTML=questions.map((q,i)=>`<div class="quiz-q"><fieldset><legend>${i+1}. ${h(q[0])}</legend><div class="quiz-options">${q[1].map((opt,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${h(opt)}</label>`).join('')}</div><p class="quiz-feedback" id="fb${i}" aria-live="polite"></p></fieldset></div>`).join('');
+}
+function gradeQuiz(){let correct=0,answered=0;
+ questions.forEach((q,i)=>{const pick=document.querySelector(`input[name="q${i}"]:checked`);const out=$('fb'+i);out.className='quiz-feedback';
+ if(!pick){out.textContent='Sin respuesta. '+q[3];return;}
+ answered++;if(Number(pick.value)===q[2]){correct++;out.classList.add('correct');out.textContent='Correcto. '+q[3];}else{out.classList.add('incorrect');out.textContent=`Revisa. Respuesta correcta: ${q[1][q[2]]}. ${q[3]}`;}});
+ $('quizScore').hidden=false;$('quizScore').textContent=`Resultado: ${correct} de ${questions.length} respuestas correctas (${Math.round(100*correct/questions.length)} %). Preguntas contestadas: ${answered}/${questions.length}. Esta calificación no se envía a Canvas.`;
+ $('quizScore').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function start(){
+ $('convInput').addEventListener('input',initConversion);$('convBase').addEventListener('change',initConversion);initConversion();
+ $('utfInput').addEventListener('input',initUTF);initUTF();
+ $('unitCount').addEventListener('input',initUnit);$('unitKind').addEventListener('change',initUnit);initUnit();
+ for(const id of ['gateSelect','inputA','inputB'])$(id).addEventListener('change',initGate);initGate();
+ $('exprGenerate').addEventListener('click',truth);$('exprInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();truth();}});
+ document.querySelectorAll('.exampleBtn').forEach(b=>b.addEventListener('click',()=>{$('exprInput').value=b.dataset.expr;truth();}));truth();
+ renderQuiz();$('quizGrade').addEventListener('click',gradeQuiz);$('quizReset').addEventListener('click',()=>{document.querySelectorAll('#quizItems input').forEach(el=>el.checked=false);document.querySelectorAll('.quiz-feedback').forEach(el=>{el.textContent='';el.className='quiz-feedback'});$('quizScore').hidden=true;});
+}
+document.addEventListener('DOMContentLoaded',start);
+</script></body></html>
